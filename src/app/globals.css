@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pastel-pink: #ffd6e8;
+  --color-pastel-purple: #e2cbf5;
+  --color-pastel-blue: #cce9ff;
+  --color-pastel-green: #cbf5d3;
+  --color-pastel-yellow: #fff3b0;
+  
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fredoka), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --background: #fffbfa;
+  --foreground: #4a4a4a;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  background-image: radial-gradient(#ffe1ec 2px, transparent 2px);
+  background-size: 40px 40px;
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-blob { animation: blob 7s infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
