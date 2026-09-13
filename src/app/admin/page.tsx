@@ -1,4 +1,4 @@
-﻿export default function AdminDashboard() {
+export default function AdminDashboard() {
   return (
     <div>
       <h1 className="text-3xl font-display font-black text-slate-800 mb-8">Panele Hoş Geldin! 👋</h1>
