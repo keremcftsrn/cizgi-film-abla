@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
@@ -28,8 +28,8 @@ export default function AdminGenel() {
       let coverUrl = heroImage;
       if (file) {
         const fileExt = file.name.split('.').pop();
-        const fileName = ${Math.random()}.;
-        const filePath = ${fileName};
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `${fileName}`;
         
         const { error: uploadError } = await supabase.storage.from('images').upload(filePath, file);
         if (uploadError) throw uploadError;
