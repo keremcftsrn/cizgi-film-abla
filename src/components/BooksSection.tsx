@@ -1,101 +1,99 @@
-﻿"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-
-interface Book {
-  id: number;
-  title: string;
-  ageGroup: string;
-  price: number;
-  stock: number;
-}
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export default function BooksSection() {
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/books')
-      .then(res => res.json())
+      .then(r => r.json())
       .then(data => {
-        if (Array.isArray(data)) {
-          setBooks(data);
-        } else {
-          setBooks([
-            { id: 1, title: 'Gökyüzü Macerası', ageGroup: '3-6 Yaş', price: 150, stock: 50 },
-            { id: 2, title: 'Ormanın Sırrı', ageGroup: '6-9 Yaş', price: 180, stock: 30 },
-            { id: 3, title: 'Küçük Yıldız', ageGroup: '3-6 Yaş', price: 120, stock: 100 }
-          ]);
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        setBooks([
-          { id: 1, title: 'Gökyüzü Macerası', ageGroup: '3-6 Yaş', price: 150, stock: 50 },
-          { id: 2, title: 'Ormanın Sırrı', ageGroup: '6-9 Yaş', price: 180, stock: 30 },
-          { id: 3, title: 'Küçük Yıldız', ageGroup: '3-6 Yaş', price: 120, stock: 100 }
-        ]);
+        setBooks(data);
         setLoading(false);
       });
   }, []);
 
   return (
-    <section className="w-full bg-white py-24 px-4 relative" id="kitaplar">
-      <div className="max-w-6xl mx-auto mb-12 text-center">
-        <motion.div 
-          initial={{ scale: 0.8 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-6 py-2 bg-pink-50 rounded-full shadow-sm text-pink-600 font-bold mb-4 border-2 border-pink-200 font-display text-lg"
-        >
-          <span className="text-2xl">📚</span> Kitap Dükkanı
-        </motion.div>
-        <h2 className="text-3xl md:text-5xl font-display font-black text-slate-800 mb-4">
-          Hayal Dünyasına Açılan Kapı
-        </h2>
-        <p className="text-lg text-slate-600 font-medium max-w-2xl mx-auto">
-          Kitapların tamamını incelemek ve detaylı alışveriş yapmak için tüm kitapları görüntüle!
-        </p>
+    <section className="w-full bg-[#fefce8] pt-16 pb-24 relative overflow-hidden">
+      {/* Arkaplan Şekilleri */}
+      <div className="absolute top-10 left-5 text-yellow-300 opacity-50 animate-bounce">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      </div>
+      <div className="absolute bottom-20 right-10 text-pink-300 opacity-40 animate-pulse">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
       </div>
 
-      {loading ? (
-        <div className="text-center font-display text-2xl text-pink-500 py-10">Kitaplar Yükleniyor... 📚</div>
-      ) : (
-        <div className="flex overflow-x-auto gap-8 pb-12 px-4 md:px-10 snap-x snap-mandatory hide-scrollbar">
-          {books.map((book) => (
-            <motion.div
-              key={book.id}
-              whileHover={{ y: -10 }}
-              className="snap-center shrink-0 w-[280px] bg-white border-4 border-pink-100 rounded-[2.5rem] p-6 shadow-xl flex flex-col"
-            >
-              <div className="w-full h-64 bg-slate-100 rounded-2xl mb-6 shadow-inner flex items-center justify-center relative overflow-hidden">
-                 <span className="text-6xl">📖</span>
-                 <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-pink-600 font-bold text-sm shadow-sm border-2 border-pink-100">
-                   {book.price} ₺
-                 </div>
-              </div>
-              
-              <h3 className="font-display font-black text-2xl text-slate-800 mb-1">{book.title}</h3>
-              <p className="text-pink-500 font-bold text-sm mb-6">{book.ageGroup}</p>
-              
-              <div className="mt-auto">
-                <Link href={`/kitaplar`} className="w-full py-4 rounded-2xl bg-pink-50 text-pink-600 border-2 border-pink-200 font-display font-bold text-lg flex items-center justify-center hover:bg-pink-100 transition-colors">
-                  İncele & Satın Al
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+      <div className="max-w-[1400px] mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <motion.div 
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block bg-white px-6 py-2 rounded-full shadow-sm border-2 border-yellow-200 text-yellow-600 font-bold mb-4"
+          >
+            📚 Kitaplarım
+          </motion.div>
+          <h2 className="font-display text-4xl md:text-5xl font-black text-slate-800">
+            Masal Dünyasına <span className="text-pink-500">Yolculuk</span>
+          </h2>
         </div>
-      )}
-      
-      <div className="flex justify-center mt-8">
-        <Link href="/kitaplar" className="px-10 py-4 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full font-display font-bold text-xl shadow-lg shadow-pink-200 hover:scale-105 transition-transform flex items-center gap-3 border-4 border-white">
-          <span className="text-2xl">🛍️</span> Tüm Kitapları Gör
-        </Link>
+
+        {loading ? (
+          <div className="text-center text-slate-500 font-medium py-10">Kitaplar yükleniyor...</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {books.map((book, index) => (
+              <motion.div 
+                key={book.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="bg-white rounded-[2rem] p-4 shadow-lg hover:shadow-xl transition-all border-2 border-white hover:border-pink-200 group"
+              >
+                <div className="relative w-full aspect-[3/4] rounded-[1.5rem] overflow-hidden mb-4 bg-slate-50">
+                  {book.coverUrl ? (
+                    <img src={book.coverUrl} alt={book.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-slate-300 font-display">Görsel Yok</div>
+                  )}
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-pink-500 shadow-sm">
+                    {book.ageGroup}
+                  </div>
+                </div>
+
+                <div className="px-2">
+                  <h3 className="font-display font-bold text-xl text-slate-800 mb-1 line-clamp-2 leading-tight">
+                    {book.title}
+                  </h3>
+                  <div className="flex items-center justify-between mt-4">
+                    <span className="text-2xl font-black text-pink-500">{book.price} ₺</span>
+                    
+                    {book.shopierUrl ? (
+                      <a 
+                        href={book.shopierUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-purple-500 hover:bg-purple-600 text-white px-5 py-2 rounded-xl font-bold transition shadow-sm hover:shadow-md"
+                      >
+                        Satın Al
+                      </a>
+                    ) : (
+                      <button className="bg-pink-100 hover:bg-pink-200 text-pink-600 px-5 py-2 rounded-xl font-bold transition">
+                        Sepete Ekle
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 }
-
