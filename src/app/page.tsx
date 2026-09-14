@@ -1,4 +1,4 @@
-import HeroSection from "@/components/HeroSection";
+﻿import HeroSection from "@/components/HeroSection";
 import GallerySection from "@/components/GallerySection";
 import BooksSection from "@/components/BooksSection";
 import AnimationsSection from "@/components/AnimationsSection";
@@ -7,6 +7,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export const dynamic = 'force-dynamic';
 export default async function Home() {
   const settings = await prisma.siteSettings.findUnique({ where: { id: "global" } }) || {
     heroImage: null,
@@ -73,3 +74,4 @@ export default async function Home() {
     </div>
   );
 }
+

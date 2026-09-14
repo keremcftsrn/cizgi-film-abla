@@ -24,20 +24,20 @@ export default function GallerySection() {
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="text-center mb-16">
           <motion.div className="inline-block bg-pink-100 text-pink-500 font-bold px-6 py-2 rounded-full mb-4">
-            📷 Çocuklarımızla Birlikte
+            🪁 En Güzel Anılarımız
           </motion.div>
           <h2 className="font-display text-4xl md:text-5xl font-black text-slate-800">
-            En Güzel <span className="text-pink-500">Anılarımız</span>
+            Çocuklarımızla Birlikte
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {albumNames.map(albumName => {
             const firstPhoto = albums[albumName][0];
             return (
               <a href={"/anilar?album=" + encodeURIComponent(albumName)} key={albumName} className="group block">
                 <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
-                  <div className="aspect-square w-full rounded-xl overflow-hidden mb-4 relative">
+                  <div className="aspect-[4/3] w-full rounded-xl overflow-hidden mb-4 relative">
                     <img src={firstPhoto.imageUrl} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                     <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-lg shadow">
