@@ -14,7 +14,9 @@ export async function POST(req: Request) {
         heroImage: data.heroImage,
         socialInstagram: data.socialInstagram,
         socialYoutube: data.socialYoutube,
-        socialTiktok: data.socialTiktok
+        socialTiktok: data.socialTiktok,
+        socialLinkedin: data.socialLinkedin,
+        socialTwitter: data.socialTwitter
       },
       create: {
         id: 'global',
@@ -24,7 +26,9 @@ export async function POST(req: Request) {
         heroImage: data.heroImage,
         socialInstagram: data.socialInstagram,
         socialYoutube: data.socialYoutube,
-        socialTiktok: data.socialTiktok
+        socialTiktok: data.socialTiktok,
+        socialLinkedin: data.socialLinkedin,
+        socialTwitter: data.socialTwitter
       }
     });
     return NextResponse.json(settings);

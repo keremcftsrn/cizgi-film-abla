@@ -74,6 +74,8 @@ model SiteSettings {
   socialInstagram String?
   socialYoutube   String?
   socialTiktok    String?
+  socialLinkedin  String?
+  socialTwitter   String?
 }
 
 model Project {

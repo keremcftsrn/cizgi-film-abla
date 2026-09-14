@@ -10,6 +10,8 @@ export default function AdminGenel() {
   const [socialInstagram, setSocialInstagram] = useState('');
   const [socialYoutube, setSocialYoutube] = useState('');
   const [socialTiktok, setSocialTiktok] = useState('');
+  const [socialLinkedin, setSocialLinkedin] = useState('');
+  const [socialTwitter, setSocialTwitter] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [heroImage, setHeroImage] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -24,6 +26,8 @@ export default function AdminGenel() {
         setSocialInstagram(data.socialInstagram || '');
         setSocialYoutube(data.socialYoutube || '');
         setSocialTiktok(data.socialTiktok || '');
+        setSocialLinkedin(data.socialLinkedin || '');
+        setSocialTwitter(data.socialTwitter || '');
         setHeroImage(data.heroImage || null);
       }
     });
@@ -59,7 +63,9 @@ export default function AdminGenel() {
         heroImage: finalImageUrl,
         socialInstagram,
         socialYoutube,
-        socialTiktok
+        socialTiktok,
+        socialLinkedin,
+        socialTwitter
       };
 
       const res = await fetch('/api/admin/settings', {
@@ -166,9 +172,36 @@ export default function AdminGenel() {
               placeholder="https://tiktok.com/@cizgifilmabla"
             />
           </div>
+
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1 text-slate-700">LinkedIn URL</label>
+            <input 
+              value={socialLinkedin}
+              onChange={e => setSocialLinkedin(e.target.value)}
+              className="w-full border border-slate-300 rounded-lg p-3"
+              placeholder="https://linkedin.com/in/elifciftci"
+            />
+          </div>
+
+          <div className="mb-8">
+            <label className="block text-sm font-medium mb-1 text-slate-700">Twitter (X) URL</label>
+            <input 
+              value={socialTwitter}
+              onChange={e => setSocialTwitter(e.target.value)}
+              className="w-full border border-slate-300 rounded-lg p-3"
+              placeholder="https://twitter.com/cizgifilmabla"
+            />
+          </div>
         </div>
 
         
+              <button 
+          type="submit" 
+          disabled={saving}
+          className="w-full bg-pink-500 text-white font-bold py-4 rounded-xl hover:bg-pink-600 transition shadow-md disabled:opacity-50"
+        >
+          {saving ? 'Kaydediliyor...' : 'Tüm Ayarları Kaydet'}
+        </button>
       </form>
     </div>
   );
