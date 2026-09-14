@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -15,7 +15,7 @@ export default function ProjectsSection() {
     <section className="w-full bg-pink-50 py-20 relative overflow-hidden">
       <div className="max-w-[1000px] mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="font-display text-4xl md:text-5xl font-black text-slate-800">Yakındaki <span className="text-pink-500">Projeler</span></h2>
+          <h2 className="font-display text-4xl md:text-5xl font-black text-slate-800">Yakında Neler <span className="text-pink-500">Var?</span></h2>
         </div>
         <div className="flex flex-col gap-8">
           {projects.map((p, i) => (

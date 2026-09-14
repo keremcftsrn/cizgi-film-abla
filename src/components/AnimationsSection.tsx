@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -16,7 +16,7 @@ export default function AnimationsSection() {
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="text-center mb-16">
           <motion.div className="inline-block bg-white/10 px-6 py-2 rounded-full mb-4 text-yellow-300 font-bold border border-white/20">
-            📺 Ekrandakiler
+            📺 Çizgi Filmlerim
           </motion.div>
           <h2 className="font-display text-4xl md:text-5xl font-black mb-4">Çizgi Filmler <span className="text-pink-400">ve Videolar</span></h2>
         </div>
