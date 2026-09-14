@@ -72,3 +72,13 @@ model SiteSettings {
   heroSubtitle String?
   aboutText    String?
 }
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  imageUrl    String?
+  linkUrl     String?
+  dateText    String?
+  createdAt   DateTime @default(now())
+}

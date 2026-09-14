@@ -1,46 +1,50 @@
-﻿"use client";
-
-import { motion } from "framer-motion";
-import { Sparkles, ArrowRight } from "lucide-react";
+'use client';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export default function ProjectsSection() {
+  const [projects, setProjects] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('/api/projects').then(r=>r.json()).then(data=>setProjects(data));
+  }, []);
+
+  if(projects.length === 0) return null;
+
   return (
-    <section className="w-full bg-white py-24 px-4 relative" id="projeler">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 bg-pastel-purple/20 rounded-[3rem] p-8 md:p-16">
-        
-        <div className="flex-1 text-center md:text-left">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-600 font-bold text-sm mb-6">
-            <Sparkles size={16} />
-            <span>Sürprizler Yolda!</span>
-          </div>
-          
-          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-800 mb-6">
-            Yakında Gelecek Projeler
-          </h2>
-          
-          <p className="text-lg text-slate-600 font-medium mb-8 max-w-md">
-            Şu sıralar yepyeni bir kitap ve eğlenceli bir animasyon filmi üzerinde çalışıyorum. Çok yakında detayları buradan paylaşacağım!
-          </p>
-
-          <button className="px-8 py-4 bg-slate-800 text-white rounded-full font-bold flex items-center gap-2 mx-auto md:mx-0 hover:bg-slate-700 transition-colors">
-            Haberdar Ol 
-            <ArrowRight size={20} />
-          </button>
+    <section className="w-full bg-pink-50 py-20 relative overflow-hidden">
+      <div className="max-w-[1000px] mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl font-black text-slate-800">Yakındaki <span className="text-pink-500">Projeler</span></h2>
         </div>
-
-        <motion.div 
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-          className="flex-1 relative flex justify-center"
-        >
-          <div className="w-64 h-64 md:w-80 md:h-80 bg-white rounded-full shadow-2xl border-8 border-purple-100 flex items-center justify-center relative overflow-hidden">
-             <div className="text-center">
-               <span className="text-6xl">🤫</span>
-               <p className="font-bold text-slate-400 mt-4">Gizli Proje</p>
-             </div>
-          </div>
-        </motion.div>
-
+        <div className="flex flex-col gap-8">
+          {projects.map((p, i) => (
+            <motion.div 
+              key={p.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white rounded-[2rem] p-6 shadow-md border-2 border-white hover:border-pink-200 transition-all flex flex-col md:flex-row gap-6"
+            >
+              {p.imageUrl && (
+                <div className="w-full md:w-1/3 aspect-[4/3] rounded-xl overflow-hidden shrink-0">
+                  <img src={p.imageUrl} className="w-full h-full object-cover" />
+                </div>
+              )}
+              <div className="flex flex-col justify-center flex-1">
+                {p.dateText && <span className="text-pink-500 font-black text-sm uppercase tracking-wider mb-2">{p.dateText}</span>}
+                <h3 className="text-2xl font-black text-slate-800 mb-3">{p.title}</h3>
+                <p className="text-slate-600 mb-6">{p.description}</p>
+                {p.linkUrl && (
+                  <a href={p.linkUrl} target="_blank" className="inline-block bg-slate-900 text-white px-6 py-3 rounded-full font-bold w-fit hover:bg-slate-800 transition">
+                    Detaylı Bilgi &rarr;
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

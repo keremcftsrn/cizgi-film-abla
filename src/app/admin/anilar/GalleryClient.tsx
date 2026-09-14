@@ -17,9 +17,9 @@ export default function GalleryClient({ initialPhotos }: { initialPhotos: any[] 
     try {
       const fileExt = file.name.split('.').pop();
       const fileName = `${Math.random()}.${fileExt}`;
-      const { error } = await supabase.storage.from('images').upload(fileName, file);
-      if (error) throw error;
-      const { data } = supabase.storage.from('images').getPublicUrl(fileName);
+      const formData = new FormData(); formData.append('file', file); const uploadRes = await fetch('/api/admin/upload', { method: 'POST', body: formData }); const uploadData = await uploadRes.json(); if(!uploadRes.ok) throw new Error(uploadData.error);
+      
+      const data = { publicUrl: uploadData.url };
       
       const res = await fetch('/api/admin/gallery', {
         method: 'POST',
