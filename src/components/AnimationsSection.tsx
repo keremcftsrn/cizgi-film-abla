@@ -25,7 +25,7 @@ export default function AnimationsSection() {
           {animations.map(a => (
             <div key={a.id} className="bg-white/5 rounded-[2rem] p-4 border border-white/10 shadow-2xl">
               <div className="aspect-video w-full rounded-xl overflow-hidden mb-4">
-                <iframe src={a.videoUrl} className="w-full h-full border-0" allowFullScreen />
+                <iframe src={a.videoUrl.replace("watch?v=", "embed/")} className="w-full h-full border-0" allowFullScreen />
               </div>
               <h3 className="font-bold text-xl px-2">{a.title}</h3>
             </div>

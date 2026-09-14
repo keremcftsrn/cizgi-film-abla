@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -59,7 +59,7 @@ export default function AnimationsClient({ initialAnimations }: { initialAnimati
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {animations.map(a => (
             <div key={a.id} className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
-              <iframe src={a.videoUrl} className="w-full aspect-video rounded-xl mb-4" />
+              <iframe src={a.videoUrl.replace("watch?v=", "embed/")} className="w-full aspect-video rounded-xl mb-4" />
               <h3 className="font-bold text-slate-800 mb-2">{a.title}</h3>
               <button onClick={()=>deleteAnim(a.id)} className="bg-red-50 text-red-500 px-4 py-2 rounded-lg text-sm w-full">Sil</button>
             </div>
