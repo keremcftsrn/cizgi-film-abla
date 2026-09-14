@@ -34,9 +34,9 @@ export default function BooksSection() {
             viewport={{ once: true }}
             className="inline-block bg-white px-6 py-2 rounded-full shadow-sm border-2 border-yellow-200 text-yellow-600 font-bold mb-4"
           >
-            🧚‍♀️ Kitaplarım
+            📚 Kitaplarım
           </motion.div>
-          <h2 className="font-display text-4xl md:text-5xl font-black text-slate-800">
+          <h2 className="font-display text-5xl md:text-6xl font-black text-slate-800">
             Masal Dünyasına <span className="text-pink-500">Yolculuk</span>
           </h2>
         </div>
@@ -97,5 +97,6 @@ export default function BooksSection() {
     </section>
   );
 }
+
 
 

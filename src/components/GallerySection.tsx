@@ -24,9 +24,9 @@ export default function GallerySection() {
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="text-center mb-16">
           <motion.div className="inline-block bg-pink-100 text-pink-500 font-bold px-6 py-2 rounded-full mb-4">
-            🪁 En Güzel Anılarımız
+            📸 En Güzel Anılarımız
           </motion.div>
-          <h2 className="font-display text-4xl md:text-5xl font-black text-slate-800">
+          <h2 className="font-display text-5xl md:text-6xl font-black text-slate-800">
             Çocuklarımızla Birlikte
           </h2>
         </div>
@@ -37,8 +37,8 @@ export default function GallerySection() {
             return (
               <a href={"/anilar?album=" + encodeURIComponent(albumName)} key={albumName} className="group block">
                 <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
-                  <div className="aspect-[4/3] w-full rounded-xl overflow-hidden mb-4 relative">
-                    <img src={firstPhoto.imageUrl} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="aspect-[3/4] w-full bg-white p-2 pb-10 rounded-sm shadow-md overflow-hidden mb-4 relative flex flex-col">
+                    <img src={firstPhoto.imageUrl} className="w-full flex-1 object-cover group-hover:scale-105 transition-transform duration-500 border border-slate-100" />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                     <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-lg shadow">
                       {albums[albumName].length} Fotoğraf

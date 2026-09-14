@@ -16,9 +16,9 @@ export default function AnimationsSection() {
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="text-center mb-16">
           <motion.div className="inline-block bg-white/10 px-6 py-2 rounded-full mb-4 text-yellow-300 font-bold border border-white/20">
-            🎪 Çizgi Filmlerim
+            📺 Çizgi Filmlerim
           </motion.div>
-          <h2 className="font-display text-4xl md:text-5xl font-black mb-4 text-white">Çizgi Filmlerim</h2>
+          <h2 className="font-display text-5xl md:text-6xl font-black mb-4 text-white">Çizgi Filmlerim</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -44,5 +44,6 @@ export default function AnimationsSection() {
     </section>
   );
 }
+
 
 
