@@ -53,7 +53,7 @@ export default function AdminGenel() {
       }
     } catch(err) {
       console.error(err);
-      alert("Fotoğraf yüklenemedi. Supabase ayarlarını kontrol et.");
+      alert(`Hata: ${err.message || JSON.stringify(err)}`);
     } finally {
       setSaving(false);
     }
