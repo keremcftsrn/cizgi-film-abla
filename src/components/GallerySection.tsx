@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -10,7 +10,7 @@ export default function GallerySection() {
     fetch('/api/gallery').then(r=>r.json()).then(data=>setPhotos(data));
   }, []);
 
-  if(photos.length === 0) return null;
+  
 
   return (
     <section className="w-full bg-white py-16 relative overflow-hidden">

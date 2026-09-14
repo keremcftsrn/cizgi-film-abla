@@ -7,6 +7,9 @@ export default function AdminGenel() {
   const [heroTitle, setHeroTitle] = useState('');
   const [heroSubtitle, setHeroSubtitle] = useState('');
   const [aboutText, setAboutText] = useState('');
+  const [socialInstagram, setSocialInstagram] = useState('');
+  const [socialYoutube, setSocialYoutube] = useState('');
+  const [socialTiktok, setSocialTiktok] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [heroImage, setHeroImage] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -18,6 +21,9 @@ export default function AdminGenel() {
         setHeroTitle(data.heroTitle || '');
         setHeroSubtitle(data.heroSubtitle || '');
         setAboutText(data.aboutText || '');
+        setSocialInstagram(data.socialInstagram || '');
+        setSocialYoutube(data.socialYoutube || '');
+        setSocialTiktok(data.socialTiktok || '');
         setHeroImage(data.heroImage || null);
       }
     });
@@ -50,7 +56,10 @@ export default function AdminGenel() {
         heroTitle,
         heroSubtitle,
         aboutText,
-        heroImage: finalImageUrl
+        heroImage: finalImageUrl,
+        socialInstagram,
+        socialYoutube,
+        socialTiktok
       };
 
       const res = await fetch('/api/admin/settings', {
@@ -123,14 +132,43 @@ export default function AdminGenel() {
           />
         </div>
 
-        <button 
-          type="submit" 
-          disabled={saving}
-          className="w-full bg-pink-500 text-white font-bold py-4 rounded-xl hover:bg-pink-600 transition shadow-md disabled:opacity-50"
-        >
-          {saving ? 'Kaydediliyor...' : 'Değişiklikleri Kaydet'}
-        </button>
+        
 
+              <div className="mt-12 pt-8 border-t border-slate-200">
+          <h2 className="text-xl font-bold mb-6 text-slate-800">Sosyal Medya Linkleri</h2>
+          
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1 text-slate-700">Instagram URL</label>
+            <input 
+              value={socialInstagram}
+              onChange={e => setSocialInstagram(e.target.value)}
+              className="w-full border border-slate-300 rounded-lg p-3"
+              placeholder="https://instagram.com/cizgifilmabla"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1 text-slate-700">YouTube URL</label>
+            <input 
+              value={socialYoutube}
+              onChange={e => setSocialYoutube(e.target.value)}
+              className="w-full border border-slate-300 rounded-lg p-3"
+              placeholder="https://youtube.com/@cizgifilmabla"
+            />
+          </div>
+
+          <div className="mb-8">
+            <label className="block text-sm font-medium mb-1 text-slate-700">TikTok URL</label>
+            <input 
+              value={socialTiktok}
+              onChange={e => setSocialTiktok(e.target.value)}
+              className="w-full border border-slate-300 rounded-lg p-3"
+              placeholder="https://tiktok.com/@cizgifilmabla"
+            />
+          </div>
+        </div>
+
+        
       </form>
     </div>
   );

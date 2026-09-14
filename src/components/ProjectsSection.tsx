@@ -9,7 +9,7 @@ export default function ProjectsSection() {
     fetch('/api/projects').then(r=>r.json()).then(data=>setProjects(data));
   }, []);
 
-  if(projects.length === 0) return null;
+  
 
   return (
     <section className="w-full bg-pink-50 py-20 relative overflow-hidden">

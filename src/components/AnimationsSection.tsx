@@ -9,7 +9,7 @@ export default function AnimationsSection() {
     fetch('/api/animations').then(r=>r.json()).then(data=>setAnimations(data));
   }, []);
 
-  if(animations.length === 0) return null;
+  
 
   return (
     <section className="w-full bg-slate-900 py-20 relative overflow-hidden text-white">

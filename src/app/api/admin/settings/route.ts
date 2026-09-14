@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-
 const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
@@ -13,6 +12,9 @@ export async function POST(req: Request) {
         heroSubtitle: data.heroSubtitle,
         aboutText: data.aboutText,
         heroImage: data.heroImage,
+        socialInstagram: data.socialInstagram,
+        socialYoutube: data.socialYoutube,
+        socialTiktok: data.socialTiktok
       },
       create: {
         id: 'global',
@@ -20,6 +22,9 @@ export async function POST(req: Request) {
         heroSubtitle: data.heroSubtitle,
         aboutText: data.aboutText,
         heroImage: data.heroImage,
+        socialInstagram: data.socialInstagram,
+        socialYoutube: data.socialYoutube,
+        socialTiktok: data.socialTiktok
       }
     });
     return NextResponse.json(settings);

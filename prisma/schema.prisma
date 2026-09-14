@@ -66,11 +66,14 @@ model Gallery {
 }
 
 model SiteSettings {
-  id           String  @id @default("global")
-  heroImage    String?
-  heroTitle    String?
-  heroSubtitle String?
-  aboutText    String?
+  id              String  @id @default("global")
+  heroImage       String?
+  heroTitle       String?
+  heroSubtitle    String?
+  aboutText       String?
+  socialInstagram String?
+  socialYoutube   String?
+  socialTiktok    String?
 }
 
 model Project {
