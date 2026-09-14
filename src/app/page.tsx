@@ -1,15 +1,23 @@
-"use client";
-
 import HeroSection from "@/components/HeroSection";
 import GallerySection from "@/components/GallerySection";
 import BooksSection from "@/components/BooksSection";
 import AnimationsSection from "@/components/AnimationsSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import { PrismaClient } from "@prisma/client";
 
-export default function Home() {
+const prisma = new PrismaClient();
+
+export default async function Home() {
+  const settings = await prisma.siteSettings.findUnique({ where: { id: "global" } }) || {
+    heroImage: null,
+    heroTitle: "Merhaba, Ben Elif Çiftçi",
+    heroSubtitle: "Yıllardır çocukların dünyasına hikayelerle, renklerle ve neşeyle dokunan bir yazar ve senaristim.",
+    aboutText: "Sadece sayfalarda değil, ekranlarda da varım! Kahramanlarımı evlerinize misafir ediyor, hayal gücünüze eşlik ediyorum."
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen overflow-hidden bg-[#fffbfa]">
-      <HeroSection />
+      <HeroSection settings={settings} />
       
       {/* Masalsı Dalga Geçişi */}
       <div className="w-full overflow-hidden leading-none z-10 -mt-2">

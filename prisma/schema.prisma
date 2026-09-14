@@ -19,7 +19,7 @@ model Book {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  orderItems  OrderItem[]
+  orderItems OrderItem[]
 }
 
 model Order {
@@ -33,33 +33,41 @@ model Order {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  items         OrderItem[]
+  items OrderItem[]
 }
 
 model OrderItem {
-  id        Int      @id @default(autoincrement())
-  orderId   Int
-  bookId    Int
-  quantity  Int
-  price     Float
-  isSigned  Boolean  @default(false)
-  signTo    String?
+  id       Int     @id @default(autoincrement())
+  orderId  Int
+  bookId   Int
+  quantity Int
+  price    Float
+  isSigned Boolean @default(false)
+  signTo   String?
 
-  order     Order    @relation(fields: [orderId], references: [id])
-  book      Book     @relation(fields: [bookId], references: [id])
+  order Order @relation(fields: [orderId], references: [id])
+  book  Book  @relation(fields: [bookId], references: [id])
 }
 
 model Animation {
-  id          Int      @id @default(autoincrement())
-  title       String
-  videoUrl    String
+  id           Int      @id @default(autoincrement())
+  title        String
+  videoUrl     String
   thumbnailUrl String?
-  createdAt   DateTime @default(now())
+  createdAt    DateTime @default(now())
 }
 
 model Gallery {
-  id          Int      @id @default(autoincrement())
-  title       String?
-  imageUrl    String
-  createdAt   DateTime @default(now())
+  id        Int      @id @default(autoincrement())
+  title     String?
+  imageUrl  String
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id           String  @id @default("global")
+  heroImage    String?
+  heroTitle    String?
+  heroSubtitle String?
+  aboutText    String?
 }

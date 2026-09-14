@@ -1,8 +1,7 @@
-"use client";
+'use client';
+import { motion } from 'framer-motion';
 
-import { motion } from "framer-motion";
-
-export default function HeroSection() {
+export default function HeroSection({ settings }: { settings: any }) {
   return (
     <section className="relative w-full max-w-[1400px] mx-auto px-4 pt-28 pb-16 md:pt-36 md:pb-20 flex flex-col items-center overflow-hidden">
       
@@ -37,9 +36,8 @@ export default function HeroSection() {
           </motion.div>
           
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-slate-800 leading-[1.1] mb-2 flex flex-col items-center md:items-start w-full">
-            <span className="mb-1">Merhaba, Ben</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b9e] via-[#d946ef] to-[#4facfe]">
-              Elif Çiftçi
+              {settings.heroTitle || 'Merhaba, Ben Elif Çiftçi'}
             </span>
           </h1>
           
@@ -53,9 +51,13 @@ export default function HeroSection() {
           <div className="bg-white/70 p-5 md:p-6 rounded-[2rem] shadow-sm backdrop-blur-md border-2 border-white mb-6 text-left relative overflow-hidden group w-full">
             <div className="absolute top-0 left-0 w-3 h-full bg-gradient-to-b from-pink-400 to-purple-400"></div>
             <p className="text-lg text-slate-700 font-medium leading-relaxed pl-2">
-              Yıllardır çocukların dünyasına hikayelerle, renklerle ve neşeyle dokunan bir yazar ve senaristim. 
-              Sadece sayfalarda değil, ekranlarda da varım! Kahramanlarımı evlerinize misafir ediyor, hayal gücünüze eşlik ediyorum.
+              {settings.heroSubtitle || 'Yıllardır çocukların dünyasına hikayelerle, renklerle ve neşeyle dokunan bir yazar ve senaristim.'}
             </p>
+            {settings.aboutText && (
+              <p className="text-lg text-slate-700 font-medium leading-relaxed pl-2 mt-2">
+                {settings.aboutText}
+              </p>
+            )}
           </div>
           
           {/* İstatistik Kutucukları (Çok Daha Hareketli) */}
@@ -108,9 +110,13 @@ export default function HeroSection() {
 
           <div className="w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-[3rem] rotate-3 bg-white p-3 shadow-2xl animate-float">
             <div className="w-full h-full rounded-[2.5rem] bg-gradient-to-br from-pink-200 via-purple-100 to-blue-200 flex items-center justify-center overflow-hidden relative shadow-inner border-4 border-white">
-               <p className="text-center font-display text-2xl text-pink-500 px-4 rotate-[-3deg] font-black">
-                 Fotoğraf Alanı
-               </p>
+              {settings.heroImage ? (
+                <img src={settings.heroImage} alt="Elif Çiftçi" className="w-full h-full object-cover rounded-[2rem]" />
+              ) : (
+                <p className="text-center font-display text-2xl text-pink-500 px-4 rotate-[-3deg] font-black">
+                  Fotoğraf Alanı
+                </p>
+              )}
             </div>
           </div>
         </motion.div>
