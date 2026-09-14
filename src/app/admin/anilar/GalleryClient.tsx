@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
@@ -16,7 +16,7 @@ export default function GalleryClient({ initialPhotos }: { initialPhotos: any[] 
     setSaving(true);
     try {
       const fileExt = file.name.split('.').pop();
-      const fileName = ${Math.random()}.;
+      const fileName = `${Math.random()}.${fileExt}`;
       const { error } = await supabase.storage.from('images').upload(fileName, file);
       if (error) throw error;
       const { data } = supabase.storage.from('images').getPublicUrl(fileName);
