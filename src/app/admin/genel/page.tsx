@@ -7,6 +7,7 @@ export default function AdminGenel() {
   const [heroTitle, setHeroTitle] = useState('');
   const [heroSubtitle, setHeroSubtitle] = useState('');
   const [aboutText, setAboutText] = useState('');
+  const [longBio, setLongBio] = useState('');
   const [socialInstagram, setSocialInstagram] = useState('');
   const [socialYoutube, setSocialYoutube] = useState('');
   const [socialTiktok, setSocialTiktok] = useState('');
@@ -23,6 +24,7 @@ export default function AdminGenel() {
         setHeroTitle(data.heroTitle || '');
         setHeroSubtitle(data.heroSubtitle || '');
         setAboutText(data.aboutText || '');
+        setLongBio(data.longBio || '');
         setSocialInstagram(data.socialInstagram || '');
         setSocialYoutube(data.socialYoutube || '');
         setSocialTiktok(data.socialTiktok || '');
@@ -60,6 +62,7 @@ export default function AdminGenel() {
         heroTitle,
         heroSubtitle,
         aboutText,
+        longBio,
         heroImage: finalImageUrl,
         socialInstagram,
         socialYoutube,
@@ -128,13 +131,25 @@ export default function AdminGenel() {
           />
         </div>
 
-        <div className="mb-8">
+                <div className="mb-4">
           <label className="block text-sm font-medium mb-1 text-slate-700">Alt Başlık (Kısa Özgeçmiş 2)</label>
           <textarea 
             value={aboutText}
             onChange={e => setAboutText(e.target.value)}
             className="w-full border border-slate-300 rounded-lg p-3"
             rows={3}
+          />
+        </div>
+
+        <div className="mb-8">
+          <label className="block text-sm font-medium mb-1 text-slate-700">Uzun Biyografi ("Ben Kimim" Sayfası İçin)</label>
+          <p className="text-xs text-slate-500 mb-2">Bu alan sitenin "Ben Kimim" sayfasındaki detaylı hikayenizi oluşturur. Paragraflara ayırarak uzunca yazabilirsiniz.</p>
+          <textarea 
+            value={longBio}
+            onChange={e => setLongBio(e.target.value)}
+            className="w-full border border-slate-300 rounded-lg p-3"
+            rows={10}
+            placeholder="Merhaba! Ben Elif Çiftçi. Çocukların o kocaman renkli dünyalarına hikayeler yazan..."
           />
         </div>
 

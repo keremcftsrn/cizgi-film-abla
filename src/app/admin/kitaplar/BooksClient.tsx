@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
@@ -11,6 +11,7 @@ export default function BooksClient({ initialBooks }: { initialBooks: any[] }) {
   const [stock, setStock] = useState('10');
   const [ageGroup, setAgeGroup] = useState('3-6 Yaş');
   const [shopierUrl, setShopierUrl] = useState('');
+  const [isSignedAvailable, setIsSignedAvailable] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [coverUrl, setCoverUrl] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -23,6 +24,7 @@ export default function BooksClient({ initialBooks }: { initialBooks: any[] }) {
     setStock('10');
     setAgeGroup('3-6 Yaş');
     setShopierUrl('');
+      setIsSignedAvailable(false);
     setFile(null);
     setCoverUrl(null);
   };
@@ -34,6 +36,7 @@ export default function BooksClient({ initialBooks }: { initialBooks: any[] }) {
     setStock(book.stock.toString());
     setAgeGroup(book.ageGroup);
     setShopierUrl(book.shopierUrl || '');
+      setIsSignedAvailable(book.isSignedAvailable || false);
     setCoverUrl(book.coverUrl);
     setFile(null);
   };

@@ -13,7 +13,8 @@ export async function POST(request: Request) {
         stock: parseInt(data.stock),
         ageGroup: data.ageGroup,
         coverUrl: data.coverUrl,
-        shopierUrl: data.shopierUrl
+        shopierUrl: data.shopierUrl,
+      isSignedAvailable: data.isSignedAvailable
       }
     });
     return NextResponse.json(book);
@@ -33,7 +34,8 @@ export async function PUT(request: Request) {
         stock: parseInt(data.stock),
         ageGroup: data.ageGroup,
         coverUrl: data.coverUrl,
-        shopierUrl: data.shopierUrl
+        shopierUrl: data.shopierUrl,
+      isSignedAvailable: data.isSignedAvailable
       }
     });
     return NextResponse.json(book);

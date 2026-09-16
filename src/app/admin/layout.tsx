@@ -14,7 +14,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin" className="p-3 rounded-xl hover:bg-slate-50 transition-colors">Panel Özeti</Link>
           <Link href="/admin/genel" className="p-3 rounded-xl hover:bg-slate-50 transition-colors">Ana Sayfa Ayarları</Link>
           <Link href="/admin/kitaplar" className="p-3 rounded-xl hover:bg-slate-50 transition-colors">Kitaplar</Link>
-          <Link href="/admin/siparisler" className="p-3 rounded-xl hover:bg-slate-50 transition-colors">Siparişler</Link>
+                    <Link href="/admin/ekrandakiler" className="p-3 rounded-xl hover:bg-slate-50 transition-colors">Çizgi Filmler / Videolar</Link>
+          <Link href="/admin/projeler" className="p-3 rounded-xl hover:bg-slate-50 transition-colors">Yakında Neler Var?</Link>
           <Link href="/admin/anilar" className="p-3 rounded-xl hover:bg-slate-50 transition-colors">Anılar / Fotoğraflar</Link>
         </nav>
         <Link href="/" className="mt-auto text-pink-500 font-bold p-3">← Siteye Dön</Link>
@@ -27,7 +28,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="md:hidden fixed bottom-0 w-full bg-white border-t border-slate-200 flex justify-around p-3 pb-safe z-50 text-[10px] font-bold text-slate-600">
         <Link href="/admin/genel" className="flex flex-col items-center p-2"><span className="text-xl mb-1">🏠</span>Ana</Link>
         <Link href="/admin/kitaplar" className="flex flex-col items-center p-2"><span className="text-xl mb-1">📚</span>Kitap</Link>
-        <Link href="/admin/siparisler" className="flex flex-col items-center p-2"><span className="text-xl mb-1">📦</span>Sipariş</Link>
+                <Link href="/admin/ekrandakiler" className="flex flex-col items-center p-2"><span className="text-xl mb-1">📺</span>Video</Link>
+        <Link href="/admin/projeler" className="flex flex-col items-center p-2"><span className="text-xl mb-1">✨</span>Proje</Link>
         <Link href="/admin/anilar" className="flex flex-col items-center p-2"><span className="text-xl mb-1">📸</span>Anı</Link>
       </div>
     </div>

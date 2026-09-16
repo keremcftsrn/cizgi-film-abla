@@ -9,16 +9,17 @@ datasource db {
 }
 
 model Book {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String?
-  price       Float
-  stock       Int      @default(0)
-  ageGroup    String
-  coverUrl    String?
-  shopierUrl  String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                Int      @id @default(autoincrement())
+  title             String
+  description       String?
+  price             Float
+  stock             Int      @default(0)
+  ageGroup          String
+  coverUrl          String?
+  shopierUrl        String?
+  isSignedAvailable Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
   orderItems OrderItem[]
 }
@@ -71,6 +72,7 @@ model SiteSettings {
   heroTitle       String?
   heroSubtitle    String?
   aboutText       String?
+  longBio         String?
   socialInstagram String?
   socialYoutube   String?
   socialTiktok    String?
